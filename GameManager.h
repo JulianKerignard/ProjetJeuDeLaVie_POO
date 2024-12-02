@@ -1,16 +1,19 @@
-//
-// Created by jujuk on 2024-12-02.
-//
-
-#ifndef GAMEMANAGER_H
-#define GAMEMANAGER_H
-
-
+#pragma once
+#include <string>
+#include "Grid.h"
+#include "GameManager.h"
 
 class GameManager {
+private:
+    Grid gameGrid;
+    int maxIterations;
+    bool toroidalMode;
+    GameManager gameManager;
 
+public:
+    GameManager(const std::string& inputFile);
+
+    void runConsoleMode();
+    void runGraphicalMode();
+    void saveIteration(int iterationNumber);
 };
-
-
-
-#endif //GAMEMANAGER_H

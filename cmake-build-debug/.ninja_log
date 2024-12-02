@@ -1,6 +1,0 @@
-# ninja log v6
-6	387	7544789583256305	CMakeFiles/ProjetJeuDelaVBio.dir/main.cpp.obj	65be4a2e36100e78
-388	527	7544789587074055	ProjetJeuDelaVBio.exe	e2a0d7908f527dbf
-14	89	7548276927227966	CMakeFiles/ProjetJeuDelaVBio.dir/GameManager.cpp.obj	876b5b2d6d877d48
-27	93	7548276927358166	CMakeFiles/ProjetJeuDelaVBio.dir/Cell.cpp.obj	5357569019be8535
-20	353	7548276927293093	CMakeFiles/ProjetJeuDelaVBio.dir/Grid.cpp.obj	3ae39e5d006a7615
