@@ -1,25 +1,32 @@
 #include "Cell.h"
-#include "Grid.h"
 
-Cell::Cell(bool state, int x, int y) 
-    : isAlive(state), isObstacle(false), x(x), y(y) {}
+Cell::Cell(CellState initialState)
+    : currentState(initialState), nextState(initialState), isObstacle(false) {}
 
-bool Cell::getState() const {
-    return isAlive;
+void Cell::updateState() {
+    if (!isObstacle) {
+        currentState = nextState;
+    }
 }
 
-void Cell::setState(bool state) {
-    isAlive = state;
+CellState Cell::getCurrentState() const {
+    return currentState;
 }
 
-int Cell::getNeighborsCount(Grid& grid) {
-    int count = 0;
-    // Implémentation du comptage des voisins vivants
-    // Vous devrez adapter cette méthode selon votre implémentation
-    return count;
+void Cell::setNextState(CellState state) {
+    if (!isObstacle) {
+        nextState = state;
+    }
 }
 
-void Cell::evolve(Grid& grid) {
-    // Implémentation des règles du Jeu de la Vie
-    // Selon le nombre de voisins, la cellule change d'état
+void Cell::setObstacle(bool obstacle) {
+    isObstacle = obstacle;
+    if (obstacle) {
+        currentState = CellState::OBSTACLE;
+        nextState = CellState::OBSTACLE;
+    }
+}
+
+bool Cell::isObstacleCell() const {
+    return isObstacle;
 }
