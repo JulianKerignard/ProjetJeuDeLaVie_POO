@@ -1,23 +1,25 @@
 cmake_minimum_required(VERSION 3.25)
-project(JeuDeLaVieBase)
+project(ProjetCaca)
 
-include(FetchContent)
-set(BUILD_SHARED_LIBS OFF)
-FETCHCONTENT_DECLARE(SFML GIT_REPOSITORY https://github.com/SFML/SFML.git GIT_TAG 2.5.1)
-FETCHCONTENT_MAKEAVAILABLE(SFML)
+set(CMAKE_CXX_STANDARD 20)
 
-set(CMAKE_CXX_STANDARD 17)
+# Définir le chemin vers SFML
+set(SFML_STATIC_LIBRARIES TRUE)
+set(SFML_DIR "C:/SFML/lib/cmake/SFML")
 
-add_executable(JeuDeLaVieBase main.cpp)
+find_package(SFML 2.6.1 COMPONENTS graphics window system REQUIRED)
 
-target_link_libraries(JeuDeLaVieBase sfml-graphics)
-
-add_executable(JeuDeLaVieBase main.cpp
-        Grid.cpp
-        Grid.h
+# Ajouter l'exécutable
+add_executable(ProjetCaca
+        main.cpp
         Cell.cpp
-        Cell.h
-        GameManager.cpp
-        GameManager.h
-        InterfaceGraphique.cpp
-        InterfaceGraphique.h)
+        Grid.cpp
+        Game.cpp
+        FileHandler.cpp
+        DisplayManager.cpp
+        ConsoleDisplay.cpp
+        GraphicalDisplay.cpp
+)
+
+# Lier SFML
+target_link_libraries(ProjetCaca sfml-system sfml-window sfml-graphics)

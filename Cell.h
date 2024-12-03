@@ -1,21 +1,25 @@
-#pragma once
-#include <vector>
+#ifndef CELL_H
+#define CELL_H
 
-class Grid; // Forward declaration
+enum class CellState {
+    DEAD,
+    ALIVE,
+    OBSTACLE
+};
 
 class Cell {
 private:
-    bool isAlive;
+    CellState currentState;
+    CellState nextState;
     bool isObstacle;
-    int x;
-    int y;
 
 public:
-    Cell(bool state = false, int x = 0, int y = 0);
-
-    bool getState();
-    void setState(bool state);
-
-    int getNeighborsCount(Grid& grid);
-    void evolve(Grid& grid);
+    Cell(CellState initialState = CellState::DEAD);
+    void updateState();
+    CellState getCurrentState() const;
+    void setNextState(CellState state);
+    void setObstacle(bool obstacle);
+    bool isObstacleCell() const;
 };
+
+#endif // CELL_H
