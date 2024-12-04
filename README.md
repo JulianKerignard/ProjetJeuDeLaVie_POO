@@ -53,7 +53,7 @@ Le **Jeu de la Vie** est un automate cellulaire créé par John Conway, où l'é
     - Les bords de la grille sont connectés, chaque cellule du bord a des voisins de l'autre côté.
 
 - **Cellules Obstacle :**
-    - Ces cellules restent dans un état fixe, vivant :green_circle: ou mort :red_circle:, et n'évoluent pas.
+    - Ces cellules restent dans un état fixe, et n'évoluent pas.
 
 - **Constructions Pré-programmées :**
     - Des motifs spécifiques peuvent être ajoutés à la grille pendant l'exécution via des touches du clavier.
