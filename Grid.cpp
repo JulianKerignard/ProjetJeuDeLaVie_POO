@@ -1,7 +1,11 @@
 #include "Grid.h"
 #include <stdexcept>
+#include <thread>
+#include <chrono>
+#include <iostream>
+#include <vector>
 
-Grid::Grid(int width, int height) 
+Grid::Grid(int width, int height)
     : width(width), height(height), isToroidal(false) {
     if (width <= 0 || height <= 0) {
         throw std::invalid_argument("Grid dimensions must be positive");
@@ -35,32 +39,71 @@ int Grid::countLiveNeighbors(int x, int y) const {
 }
 
 void Grid::updateCells() {
-    // Premier passage : calculer les états suivants
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            if (cells[y][x].isObstacleCell()) continue;
+    auto start = std::chrono::high_resolution_clock::now();
 
-            int liveNeighbors = countLiveNeighbors(x, y);
-            CellState currentState = cells[y][x].getCurrentState();
+    // Configuration du multithreading
+    const int threadCount = std::thread::hardware_concurrency();
+    std::vector<std::thread> threads;
+    const int rowsPerThread = height / threadCount;
 
-            if (currentState == CellState::DEAD) {
-                if (liveNeighbors == 3) {
-                    cells[y][x].setNextState(CellState::ALIVE);
-                }
-            } else if (currentState == CellState::ALIVE) {
-                if (liveNeighbors < 2 || liveNeighbors > 3) {
-                    cells[y][x].setNextState(CellState::DEAD);
+    // Première phase : calculer les états suivants
+    for (int i = 0; i < threadCount; ++i) {
+        int startRow = i * rowsPerThread;
+        int endRow = (i == threadCount - 1) ? height : (i + 1) * rowsPerThread;
+
+        threads.emplace_back([this, startRow, endRow, i]() {
+            std::cout << "Thread " << i << " traite les lignes " << startRow << " à " << endRow - 1 << std::endl;
+
+            for (int y = startRow; y < endRow; y++) {
+                for (int x = 0; x < width; x++) {
+                    if (cells[y][x].isObstacleCell()) continue;
+
+                    int liveNeighbors = countLiveNeighbors(x, y);
+                    CellState currentState = cells[y][x].getCurrentState();
+
+                    if (currentState == CellState::DEAD) {
+                        if (liveNeighbors == 3) {
+                            cells[y][x].setNextState(CellState::ALIVE);
+                        }
+                    } else if (currentState == CellState::ALIVE) {
+                        if (liveNeighbors < 2 || liveNeighbors > 3) {
+                            cells[y][x].setNextState(CellState::DEAD);
+                        }
+                    }
                 }
             }
-        }
+        });
     }
 
-    // Deuxième passage : mettre à jour les états
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            cells[y][x].updateState();
-        }
+    // Attendre que tous les threads terminent
+    for (auto& thread : threads) {
+        thread.join();
     }
+    threads.clear();
+
+    // Deuxième phase : mettre à jour les états (aussi en parallèle)
+    for (int i = 0; i < threadCount; ++i) {
+        int startRow = i * rowsPerThread;
+        int endRow = (i == threadCount - 1) ? height : (i + 1) * rowsPerThread;
+
+        threads.emplace_back([this, startRow, endRow]() {
+            for (int y = startRow; y < endRow; y++) {
+                for (int x = 0; x < width; x++) {
+                    cells[y][x].updateState();
+                }
+            }
+        });
+    }
+
+    // Attendre que tous les threads terminent
+    for (auto& thread : threads) {
+        thread.join();
+    }
+
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    std::cout << "Mise à jour effectuée en " << duration.count()
+              << " microsecondes avec " << threadCount << " threads" << std::endl;
 }
 
 Cell& Grid::getCellAt(int x, int y) {
@@ -76,10 +119,6 @@ Cell& Grid::getCellAt(int x, int y) {
 
 const Cell& Grid::getCellAt(int x, int y) const {
     return const_cast<Grid*>(this)->getCellAt(x, y);
-}
-
-void Grid::setToroidal(bool enabled) {
-    isToroidal = enabled;
 }
 
 void Grid::addObstacle(int x, int y) {

@@ -19,6 +19,10 @@ add_executable(ProjetCaca
         DisplayManager.cpp
         ConsoleDisplay.cpp
         GraphicalDisplay.cpp
+        ThreadPool.cpp
+        ThreadPool.h
+        RleReader.cpp
+        RleReader.h
 )
 
 # Lier SFML

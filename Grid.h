@@ -28,11 +28,12 @@ public:
     const Cell& getCellAt(int x, int y) const;
     void setCellAt(int x, int y, CellState state);
     std::vector<std::pair<int, int>> getNeighbors(int x, int y) const;
-    void setToroidal(bool enabled);
+    void setToroidal(bool enabled) { isToroidal = enabled; }
     void addObstacle(int x, int y);
     void addPattern(Pattern pattern, int x, int y);
     int getWidth() const { return width; }
     int getHeight() const { return height; }
+    bool getToroidal() const { return isToroidal; }
 };
 
 #endif // GRID_H

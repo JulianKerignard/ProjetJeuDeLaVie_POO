@@ -2,9 +2,15 @@
 #define CONSOLE_DISPLAY_H
 
 #include "DisplayManager.h"
+#include <fstream>
 
 class ConsoleDisplay : public DisplayManager {
+private:
+    int iterationCounter;
+    std::ofstream outputFile;  // Ajout du membre outputFile
+
 public:
+    ConsoleDisplay();
     void initialize() override;
     void update(const Grid& grid) override;
     void close() override;

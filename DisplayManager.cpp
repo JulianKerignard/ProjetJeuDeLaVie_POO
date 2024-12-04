@@ -10,7 +10,7 @@ public:
     }
 
     void update(const Grid& grid) override {
-        system("cls");  // Pour Windows (utilisez "clear" pour Linux)
+        system("cls");  // Effacer la console
         for (int y = 0; y < grid.getHeight(); y++) {
             for (int x = 0; x < grid.getWidth(); x++) {
                 if (grid.getCellAt(x, y).getCurrentState() == CellState::ALIVE) {

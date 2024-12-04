@@ -7,6 +7,7 @@
 class FileHandler {
 public:
     static Grid loadGridFromFile(const std::string& path);
+    static void loadGridFromFile(const std::string& path, Grid& grid);
     static void saveGridToFile(const Grid& grid, const std::string& path);
 
 private:

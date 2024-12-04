@@ -3,12 +3,18 @@
 
 #include "Grid.h"
 #include "FileHandler.h"
+#include "RLEReader.h"
 #include "DisplayManager.h"
 #include <memory>
 
 enum class DisplayMode {
     CONSOLE,
     GRAPHICAL
+};
+
+enum class FileType {
+    STANDARD,
+    RLE
 };
 
 class Game {
@@ -19,8 +25,12 @@ private:
     bool isRunning;
     int iterationDelay;
 
+    void initializeDisplay(DisplayMode mode);
+
 public:
-    Game(const std::string& filePath, DisplayMode mode);
+    Game(const std::string& filePath, DisplayMode mode); // Constructeur original
+    Game(const std::string& filePath, DisplayMode mode, FileType fileType); // Nouveau constructeur simple
+    Game(const std::string& filePath, DisplayMode mode, FileType fileType, int width, int height); // Constructeur avec dimensions
     void run();
     void pause();
     void resume();

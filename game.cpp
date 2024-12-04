@@ -4,19 +4,58 @@
 #include <thread>
 #include <chrono>
 
+// Constructeur original
 Game::Game(const std::string& filePath, DisplayMode mode)
     : grid(FileHandler::loadGridFromFile(filePath)),
       iterationCount(0),
       isRunning(false),
       iterationDelay(100) {
+    initializeDisplay(mode);
+}
 
+// Nouveau constructeur simple
+Game::Game(const std::string& filePath, DisplayMode mode, FileType fileType)
+    : grid(1, 1),  // Initialisation temporaire
+      iterationCount(0),
+      isRunning(false),
+      iterationDelay(100) {
+
+    if (fileType == FileType::STANDARD) {
+        grid = FileHandler::loadGridFromFile(filePath);
+    } else if (fileType == FileType::RLE) {
+        grid = RLEReader::loadFromFile(filePath);
+    }
+
+    initializeDisplay(mode);
+}
+
+// Constructeur avec dimensions spécifiées
+Game::Game(const std::string& filePath, DisplayMode mode, FileType fileType, int width, int height)
+    : grid(width, height),
+      iterationCount(0),
+      isRunning(false),
+      iterationDelay(100) {
+
+    if (fileType == FileType::STANDARD) {
+        FileHandler::loadGridFromFile(filePath, grid);
+    } else if (fileType == FileType::RLE) {
+        RLEReader::loadFromFile(filePath, grid);
+    }
+
+    initializeDisplay(mode);
+}
+
+void Game::initializeDisplay(DisplayMode mode) {
     switch (mode) {
         case DisplayMode::CONSOLE:
             displayManager = std::make_unique<ConsoleDisplay>();
-        break;
-        case DisplayMode::GRAPHICAL:
-            displayManager = std::make_unique<GraphicalDisplay>();
-        break;
+            break;
+        case DisplayMode::GRAPHICAL: {
+            auto graphicalDisplay = std::make_unique<GraphicalDisplay>();
+            graphicalDisplay->setGrid(&grid);
+            displayManager = std::move(graphicalDisplay);
+            break;
+        }
     }
 }
 
@@ -29,7 +68,6 @@ void Game::run() {
         displayManager->update(grid);
         iterationCount++;
 
-        // Pour l'affichage graphique, vérifions si la fenêtre est toujours ouverte
         if (auto* graphicalDisplay = dynamic_cast<GraphicalDisplay*>(displayManager.get())) {
             if (!graphicalDisplay->isWindowOpen()) {
                 isRunning = false;
@@ -38,6 +76,8 @@ void Game::run() {
 
         std::this_thread::sleep_for(std::chrono::milliseconds(iterationDelay));
     }
+
+    displayManager->close();
 }
 
 void Game::pause() {
@@ -48,7 +88,6 @@ void Game::resume() {
     isRunning = true;
 }
 
-// Ajout de l'implémentation manquante
 void Game::setIterationDelay(int ms) {
     iterationDelay = ms;
 }
