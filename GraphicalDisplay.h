@@ -15,7 +15,35 @@ private:
     sf::Text helpText;
     sf::RectangleShape cellShape;  // Réutilisable pour toutes les cellules
 
-    const sf::Color ALIVE_COLOR = sf::Color::White;
+    const sf::Color
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ALIVE_COLOR = sf::Color::White;
     const sf::Color DEAD_COLOR = sf::Color::Black;
     const sf::Color GRID_COLOR = sf::Color(50, 50, 50);
     const sf::Color OBSTACLE_COLOR = sf::Color::Red;

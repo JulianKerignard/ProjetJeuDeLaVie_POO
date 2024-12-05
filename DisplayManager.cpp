@@ -14,9 +14,9 @@ public:
         for (int y = 0; y < grid.getHeight(); y++) {
             for (int x = 0; x < grid.getWidth(); x++) {
                 if (grid.getCellAt(x, y).getCurrentState() == CellState::ALIVE) {
-                    std::cout << "■ ";
+                    std::cout << "1";
                 } else {
-                    std::cout << "□ ";
+                    std::cout << "2 ";
                 }
             }
             std::cout << std::endl;

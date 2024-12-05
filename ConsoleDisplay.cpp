@@ -4,7 +4,7 @@
 #include <chrono>
 
 ConsoleDisplay::ConsoleDisplay() : iterationCounter(0) {
-    outputFile.open("simulation_log_out.txt");  // Ouverture du fichier dans le constructeur
+    outputFile.open("simulation_log.txt");
 }
 
 void ConsoleDisplay::initialize() {
@@ -19,7 +19,10 @@ void ConsoleDisplay::update(const Grid& grid) {
     // Affichage console
     for (int y = 0; y < grid.getHeight(); y++) {
         for (int x = 0; x < grid.getWidth(); x++) {
-            if (grid.getCellAt(x, y).getCurrentState() == CellState::ALIVE) {
+            const Cell& cell = grid.getCellAt(x, y);
+            if (cell.isObstacleCell()) {
+                std::cout << "2 ";
+            } else if (cell.getCurrentState() == CellState::ALIVE) {
                 std::cout << "1 ";
             } else {
                 std::cout << "0 ";
@@ -34,7 +37,10 @@ void ConsoleDisplay::update(const Grid& grid) {
 
     for (int y = 0; y < grid.getHeight(); y++) {
         for (int x = 0; x < grid.getWidth(); x++) {
-            if (grid.getCellAt(x, y).getCurrentState() == CellState::ALIVE) {
+            const Cell& cell = grid.getCellAt(x, y);
+            if (cell.isObstacleCell()) {
+                outputFile << "2 ";  // 2 pour les obstacles
+            } else if (cell.getCurrentState() == CellState::ALIVE) {
                 outputFile << "1 ";
             } else {
                 outputFile << "0 ";

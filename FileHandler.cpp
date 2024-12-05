@@ -24,7 +24,11 @@ void FileHandler::loadGridFromFile(const std::string& path, Grid& grid) {
         for (int x = 0; x < width; x++) {
             int state;
             iss >> state;
-            grid.setCellAt(x, y, state ? CellState::ALIVE : CellState::DEAD);
+            if (state == 2) {
+                grid.addObstacle(x, y);
+            } else {
+                grid.setCellAt(x, y, state ? CellState::ALIVE : CellState::DEAD);
+            }
         }
     }
 }
@@ -47,7 +51,11 @@ Grid FileHandler::loadGridFromFile(const std::string& path) {
         for (int x = 0; x < width; x++) {
             int state;
             iss >> state;
-            grid.setCellAt(x, y, state ? CellState::ALIVE : CellState::DEAD);
+            if (state == 2) {
+                grid.addObstacle(x, y);
+            } else {
+                grid.setCellAt(x, y, state ? CellState::ALIVE : CellState::DEAD);
+            }
         }
     }
 
@@ -64,7 +72,12 @@ void FileHandler::saveGridToFile(const Grid& grid, const std::string& path) {
 
     for (int y = 0; y < grid.getHeight(); y++) {
         for (int x = 0; x < grid.getWidth(); x++) {
-            file << (grid.getCellAt(x, y).getCurrentState() == CellState::ALIVE ? "1" : "0");
+            const Cell& cell = grid.getCellAt(x, y);
+            if (cell.isObstacleCell()) {
+                file << "2";
+            } else {
+                file << (cell.getCurrentState() == CellState::ALIVE ? "1" : "0");
+            }
             if (x < grid.getWidth() - 1) file << " ";
         }
         file << "\n";
@@ -101,7 +114,7 @@ bool FileHandler::validateFileFormat(const std::string& content) {
             int columnCount = 0;
 
             while (lineStream >> value && columnCount < width) {
-                if (value != 0 && value != 1) {
+                if (value != 0 && value != 1 && value != 2) {  // Ajout de la vérification pour 2
                     return false;
                 }
                 columnCount++;

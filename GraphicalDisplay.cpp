@@ -88,13 +88,14 @@ void GraphicalDisplay::update(const Grid& grid) {
         std::stringstream controls;
         controls << "Controles:\n"
                 << "T: Mode torique " << (grid.getToroidal() ? "(ON)" : "(OFF)") << "\n"
-                << "G: Placer un glider\n"
+                << "G: Placer un Ship\n"
                 << "O: Placer un obstacle\n"
                 << "Clic gauche: Activer/Desactiver une cellule\n"
                 << "Echap: Quitter\n"
                 << "Taille: " << grid.getWidth() << "x" << grid.getHeight();
         helpText.setString(controls.str());
         buffer.draw(helpText);
+
 
         buffer.display();
         sf::Sprite sprite(buffer.getTexture());
@@ -135,6 +136,9 @@ void GraphicalDisplay::handleEvents() {
                     if (gridX >= 0 && gridX < grid->getWidth() &&
                         gridY >= 0 && gridY < grid->getHeight()) {
                         grid->addObstacle(gridX, gridY);
+                    }
+                    else if (event.key.code == sf::Keyboard::Space) {
+
                     }
                 }
                 break;

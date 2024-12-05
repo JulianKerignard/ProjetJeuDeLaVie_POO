@@ -31,7 +31,9 @@ int Grid::getValidIndex(int index, int max) const {
 int Grid::countLiveNeighbors(int x, int y) const {
     int count = 0;
     for (const auto& neighbor : getNeighbors(x, y)) {
-        if (getCellAt(neighbor.first, neighbor.second).getCurrentState() == CellState::ALIVE) {
+        const Cell& neighborCell = getCellAt(neighbor.first, neighbor.second);
+        // Ne pas compter les obstacles comme voisins vivants
+        if (!neighborCell.isObstacleCell() && neighborCell.getCurrentState() == CellState::ALIVE) {
             count++;
         }
     }
@@ -56,7 +58,11 @@ void Grid::updateCells() {
 
             for (int y = startRow; y < endRow; y++) {
                 for (int x = 0; x < width; x++) {
-                    if (cells[y][x].isObstacleCell()) continue;
+                    // Skip les obstacles
+                    if (cells[y][x].isObstacleCell()) {
+                        cells[y][x].setNextState(cells[y][x].getCurrentState());
+                        continue;
+                    }
 
                     int liveNeighbors = countLiveNeighbors(x, y);
                     CellState currentState = cells[y][x].getCurrentState();
@@ -64,10 +70,14 @@ void Grid::updateCells() {
                     if (currentState == CellState::DEAD) {
                         if (liveNeighbors == 3) {
                             cells[y][x].setNextState(CellState::ALIVE);
+                        } else {
+                            cells[y][x].setNextState(CellState::DEAD);
                         }
                     } else if (currentState == CellState::ALIVE) {
                         if (liveNeighbors < 2 || liveNeighbors > 3) {
                             cells[y][x].setNextState(CellState::DEAD);
+                        } else {
+                            cells[y][x].setNextState(CellState::ALIVE);
                         }
                     }
                 }
@@ -89,7 +99,10 @@ void Grid::updateCells() {
         threads.emplace_back([this, startRow, endRow]() {
             for (int y = startRow; y < endRow; y++) {
                 for (int x = 0; x < width; x++) {
-                    cells[y][x].updateState();
+                    // Ne mettre à jour que les cellules non-obstacles
+                    if (!cells[y][x].isObstacleCell()) {
+                        cells[y][x].updateState();
+                    }
                 }
             }
         });
