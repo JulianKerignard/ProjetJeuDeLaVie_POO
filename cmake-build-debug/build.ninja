@@ -49,85 +49,85 @@ cmake_ninja_workdir = C$:/Users/jujuk/CLionProjects/ProjetCaca/cmake-build-debug
 
 build cmake_object_order_depends_target_ProjetCaca: phony || .
 
-build CMakeFiles/ProjetCaca.dir/main.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/main.cpp || cmake_object_order_depends_target_ProjetCaca
+build CMakeFiles/ProjetCaca.dir/Code/CPP/main.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/Code/CPP/main.cpp || cmake_object_order_depends_target_ProjetCaca
   DEFINES = -DSFML_STATIC
-  DEP_FILE = CMakeFiles\ProjetCaca.dir\main.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProjetCaca.dir\Code\CPP\main.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -isystem C:/SFML/include
+  INCLUDES = -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code/Headers -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code -isystem C:/SFML/include
   OBJECT_DIR = CMakeFiles\ProjetCaca.dir
-  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir\Code\CPP
 
-build CMakeFiles/ProjetCaca.dir/Cell.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/Cell.cpp || cmake_object_order_depends_target_ProjetCaca
+build CMakeFiles/ProjetCaca.dir/Code/CPP/Cell.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/Code/CPP/Cell.cpp || cmake_object_order_depends_target_ProjetCaca
   DEFINES = -DSFML_STATIC
-  DEP_FILE = CMakeFiles\ProjetCaca.dir\Cell.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProjetCaca.dir\Code\CPP\Cell.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -isystem C:/SFML/include
+  INCLUDES = -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code/Headers -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code -isystem C:/SFML/include
   OBJECT_DIR = CMakeFiles\ProjetCaca.dir
-  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir\Code\CPP
 
-build CMakeFiles/ProjetCaca.dir/Grid.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/Grid.cpp || cmake_object_order_depends_target_ProjetCaca
+build CMakeFiles/ProjetCaca.dir/Code/CPP/Grid.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/Code/CPP/Grid.cpp || cmake_object_order_depends_target_ProjetCaca
   DEFINES = -DSFML_STATIC
-  DEP_FILE = CMakeFiles\ProjetCaca.dir\Grid.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProjetCaca.dir\Code\CPP\Grid.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -isystem C:/SFML/include
+  INCLUDES = -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code/Headers -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code -isystem C:/SFML/include
   OBJECT_DIR = CMakeFiles\ProjetCaca.dir
-  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir\Code\CPP
 
-build CMakeFiles/ProjetCaca.dir/game.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/game.cpp || cmake_object_order_depends_target_ProjetCaca
+build CMakeFiles/ProjetCaca.dir/Code/CPP/game.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/Code/CPP/game.cpp || cmake_object_order_depends_target_ProjetCaca
   DEFINES = -DSFML_STATIC
-  DEP_FILE = CMakeFiles\ProjetCaca.dir\game.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProjetCaca.dir\Code\CPP\game.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -isystem C:/SFML/include
+  INCLUDES = -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code/Headers -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code -isystem C:/SFML/include
   OBJECT_DIR = CMakeFiles\ProjetCaca.dir
-  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir\Code\CPP
 
-build CMakeFiles/ProjetCaca.dir/FileHandler.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/FileHandler.cpp || cmake_object_order_depends_target_ProjetCaca
+build CMakeFiles/ProjetCaca.dir/Code/CPP/FileHandler.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/Code/CPP/FileHandler.cpp || cmake_object_order_depends_target_ProjetCaca
   DEFINES = -DSFML_STATIC
-  DEP_FILE = CMakeFiles\ProjetCaca.dir\FileHandler.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProjetCaca.dir\Code\CPP\FileHandler.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -isystem C:/SFML/include
+  INCLUDES = -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code/Headers -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code -isystem C:/SFML/include
   OBJECT_DIR = CMakeFiles\ProjetCaca.dir
-  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir\Code\CPP
 
-build CMakeFiles/ProjetCaca.dir/DisplayManager.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/DisplayManager.cpp || cmake_object_order_depends_target_ProjetCaca
+build CMakeFiles/ProjetCaca.dir/Code/CPP/DisplayManager.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/Code/CPP/DisplayManager.cpp || cmake_object_order_depends_target_ProjetCaca
   DEFINES = -DSFML_STATIC
-  DEP_FILE = CMakeFiles\ProjetCaca.dir\DisplayManager.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProjetCaca.dir\Code\CPP\DisplayManager.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -isystem C:/SFML/include
+  INCLUDES = -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code/Headers -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code -isystem C:/SFML/include
   OBJECT_DIR = CMakeFiles\ProjetCaca.dir
-  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir\Code\CPP
 
-build CMakeFiles/ProjetCaca.dir/ConsoleDisplay.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/ConsoleDisplay.cpp || cmake_object_order_depends_target_ProjetCaca
+build CMakeFiles/ProjetCaca.dir/Code/CPP/ConsoleDisplay.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/Code/CPP/ConsoleDisplay.cpp || cmake_object_order_depends_target_ProjetCaca
   DEFINES = -DSFML_STATIC
-  DEP_FILE = CMakeFiles\ProjetCaca.dir\ConsoleDisplay.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProjetCaca.dir\Code\CPP\ConsoleDisplay.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -isystem C:/SFML/include
+  INCLUDES = -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code/Headers -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code -isystem C:/SFML/include
   OBJECT_DIR = CMakeFiles\ProjetCaca.dir
-  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir\Code\CPP
 
-build CMakeFiles/ProjetCaca.dir/GraphicalDisplay.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/GraphicalDisplay.cpp || cmake_object_order_depends_target_ProjetCaca
+build CMakeFiles/ProjetCaca.dir/Code/CPP/GraphicalDisplay.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/Code/CPP/GraphicalDisplay.cpp || cmake_object_order_depends_target_ProjetCaca
   DEFINES = -DSFML_STATIC
-  DEP_FILE = CMakeFiles\ProjetCaca.dir\GraphicalDisplay.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProjetCaca.dir\Code\CPP\GraphicalDisplay.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -isystem C:/SFML/include
+  INCLUDES = -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code/Headers -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code -isystem C:/SFML/include
   OBJECT_DIR = CMakeFiles\ProjetCaca.dir
-  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir\Code\CPP
 
-build CMakeFiles/ProjetCaca.dir/ThreadPool.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/ThreadPool.cpp || cmake_object_order_depends_target_ProjetCaca
+build CMakeFiles/ProjetCaca.dir/Code/CPP/ThreadPool.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/Code/CPP/ThreadPool.cpp || cmake_object_order_depends_target_ProjetCaca
   DEFINES = -DSFML_STATIC
-  DEP_FILE = CMakeFiles\ProjetCaca.dir\ThreadPool.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProjetCaca.dir\Code\CPP\ThreadPool.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -isystem C:/SFML/include
+  INCLUDES = -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code/Headers -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code -isystem C:/SFML/include
   OBJECT_DIR = CMakeFiles\ProjetCaca.dir
-  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir\Code\CPP
 
-build CMakeFiles/ProjetCaca.dir/RleReader.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/RleReader.cpp || cmake_object_order_depends_target_ProjetCaca
+build CMakeFiles/ProjetCaca.dir/Code/CPP/RleReader.cpp.obj: CXX_COMPILER__ProjetCaca_unscanned_Debug C$:/Users/jujuk/CLionProjects/ProjetCaca/Code/CPP/RleReader.cpp || cmake_object_order_depends_target_ProjetCaca
   DEFINES = -DSFML_STATIC
-  DEP_FILE = CMakeFiles\ProjetCaca.dir\RleReader.cpp.obj.d
+  DEP_FILE = CMakeFiles\ProjetCaca.dir\Code\CPP\RleReader.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -isystem C:/SFML/include
+  INCLUDES = -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code/Headers -IC:/Users/jujuk/CLionProjects/ProjetCaca/Code -isystem C:/SFML/include
   OBJECT_DIR = CMakeFiles\ProjetCaca.dir
-  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetCaca.dir\Code\CPP
 
 
 # =============================================================================
@@ -137,7 +137,7 @@ build CMakeFiles/ProjetCaca.dir/RleReader.cpp.obj: CXX_COMPILER__ProjetCaca_unsc
 #############################################
 # Link the executable ProjetCaca.exe
 
-build ProjetCaca.exe: CXX_EXECUTABLE_LINKER__ProjetCaca_Debug CMakeFiles/ProjetCaca.dir/main.cpp.obj CMakeFiles/ProjetCaca.dir/Cell.cpp.obj CMakeFiles/ProjetCaca.dir/Grid.cpp.obj CMakeFiles/ProjetCaca.dir/game.cpp.obj CMakeFiles/ProjetCaca.dir/FileHandler.cpp.obj CMakeFiles/ProjetCaca.dir/DisplayManager.cpp.obj CMakeFiles/ProjetCaca.dir/ConsoleDisplay.cpp.obj CMakeFiles/ProjetCaca.dir/GraphicalDisplay.cpp.obj CMakeFiles/ProjetCaca.dir/ThreadPool.cpp.obj CMakeFiles/ProjetCaca.dir/RleReader.cpp.obj | C$:/SFML/lib/libsfml-system-s-d.a C$:/SFML/lib/libsfml-window-s-d.a C$:/SFML/lib/libsfml-graphics-s-d.a C$:/SFML/lib/libsfml-window-s-d.a C$:/SFML/lib/libsfml-system-s-d.a C$:/SFML/lib/libfreetype.a
+build ProjetCaca.exe: CXX_EXECUTABLE_LINKER__ProjetCaca_Debug CMakeFiles/ProjetCaca.dir/Code/CPP/main.cpp.obj CMakeFiles/ProjetCaca.dir/Code/CPP/Cell.cpp.obj CMakeFiles/ProjetCaca.dir/Code/CPP/Grid.cpp.obj CMakeFiles/ProjetCaca.dir/Code/CPP/game.cpp.obj CMakeFiles/ProjetCaca.dir/Code/CPP/FileHandler.cpp.obj CMakeFiles/ProjetCaca.dir/Code/CPP/DisplayManager.cpp.obj CMakeFiles/ProjetCaca.dir/Code/CPP/ConsoleDisplay.cpp.obj CMakeFiles/ProjetCaca.dir/Code/CPP/GraphicalDisplay.cpp.obj CMakeFiles/ProjetCaca.dir/Code/CPP/ThreadPool.cpp.obj CMakeFiles/ProjetCaca.dir/Code/CPP/RleReader.cpp.obj | C$:/SFML/lib/libsfml-system-s-d.a C$:/SFML/lib/libsfml-window-s-d.a C$:/SFML/lib/libsfml-graphics-s-d.a C$:/SFML/lib/libsfml-window-s-d.a C$:/SFML/lib/libsfml-system-s-d.a C$:/SFML/lib/libfreetype.a
   FLAGS = -g
   LINK_LIBRARIES = C:/SFML/lib/libsfml-system-s-d.a  C:/SFML/lib/libsfml-window-s-d.a  C:/SFML/lib/libsfml-graphics-s-d.a  C:/SFML/lib/libsfml-window-s-d.a  C:/SFML/lib/libsfml-system-s-d.a  -lwinmm  -lOpenGL32  -lgdi32  C:/SFML/lib/libfreetype.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ProjetCaca.dir
