@@ -9,7 +9,7 @@
 
 Wev Documentation : In Dev.....
 
-Text Documentation :
+Text Documentation : https://github.com/JulianKerignard/ProjetJeuDeLaVie_POO/wiki
 
 ## 1. **Présentation du Projet**
 Le **Jeu de la Vie** est un automate cellulaire créé par John Conway, où l'évolution d'une population de cellules se fait sur une grille à 2 dimensions. Chaque cellule peut être vivante ou morte et évolue selon des règles précises. L'objectif de ce projet est d'implémenter cet automate en utilisant la programmation orientée objet (POO) en C++ et de créer une interface graphique pour visualiser l'évolution des cellules.
