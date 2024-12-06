@@ -74,7 +74,7 @@ void RLEReader::loadFromFile(const std::string& filename, Grid& grid) {
 
 Grid RLEReader::loadFromFile(const std::string& filename) {
     // Création d'une grille avec les dimensions par défaut
-    Grid grid(50, 50);
+    Grid grid(350, 350);
     loadFromFile(filename, grid);
     return grid;
 }

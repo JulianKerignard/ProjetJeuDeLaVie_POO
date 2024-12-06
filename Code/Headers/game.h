@@ -10,13 +10,13 @@
 #include <string>
 #include <algorithm>
 
-// Définit les modes d'affichage disponibles
+// Modes d'affichage disponibles
 enum class DisplayMode {
     CONSOLE,    // Mode console texte
     GRAPHICAL   // Mode interface graphique SFML
 };
 
-// Définit les types de fichiers supportés
+// Types de fichiers supportés
 enum class FileType {
     STANDARD,   // Format texte standard
     RLE         // Format Run Length Encoding
@@ -25,14 +25,14 @@ enum class FileType {
 class Game {
 private:
     Grid grid;                                      // La grille du jeu
-    std::unique_ptr<DisplayManager> displayManager; // Gestionnaire d'affichage polymorphique
-    int iterationCount;                            // Compte les itérations du jeu
-    bool isRunning;                                // État d'exécution du jeu
-    float iterationDelay;                          // Délai entre les itérations (en ms)
+    std::unique_ptr<DisplayManager> displayManager; // Gestionnaire d'affichage
+    int iterationCount;                            // Nombre d'itérations actuelles
+    int maxIterations;                             // Nombre maximum d'itérations
+    bool isRunning;                                // État d'exécution
+    float iterationDelay;                          // Délai entre itérations (ms)
     float lastUpdateSpeed;                         // Dernière vitesse connue
 
-    // Initialise le mode d'affichage approprié
-    void initializeDisplay(DisplayMode mode);
+    void initializeDisplay(DisplayMode mode);       // Initialise l'affichage
 
 public:
     // Constructeurs
@@ -40,18 +40,17 @@ public:
     Game(const std::string& filePath, DisplayMode mode, FileType fileType);
     Game(const std::string& filePath, DisplayMode mode, FileType fileType, int width, int height);
 
-    // Interface utilisateur statique
+    // Interface utilisateur et création de configuration
     static void userInterface();
-
-    // Crée un nouveau fichier de configuration avec les dimensions spécifiées
     static void createNewConfigFile(int width, int height);
 
     // Méthodes de contrôle
-    void run();                               // Lance la boucle principale
-    void pause();                             // Met le jeu en pause
-    void resume();                            // Reprend le jeu
-    void setIterationDelay(float ms);         // Définit le délai entre les itérations
-    void updateIterationDelay(float delta);   // Modifie le délai d'itération
+    void run();
+    void pause();
+    void resume();
+    void setIterationDelay(float ms);
+    void updateIterationDelay(float delta);
+    void setMaxIterations(int max) { maxIterations = max; }
 
     // Accesseurs
     int getCurrentIteration() const;

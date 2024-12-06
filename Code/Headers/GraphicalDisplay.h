@@ -16,6 +16,9 @@ private:
     // États et paramètres
     bool isDrawing;               // État du dessin
     float iterationSpeed;         // Vitesse de simulation en ms
+    bool paused;                  // État de pause
+    int currentIteration;         // Itération actuelle
+    int maxIterations;           // Nombre maximum d'itérations
 
     // Interface graphique
     sf::Font font;                // Police pour le texte
@@ -47,9 +50,16 @@ public:
     bool isWindowOpen() const;
     void setGrid(Grid* g) { grid = g; }
 
-    // Contrôle de la vitesse
+    // Contrôle de la vitesse et de la pause
     void setIterationDelay(float delay) { iterationSpeed = std::clamp(delay, 50.0f, 1000.0f); }
     float getIterationSpeed() const { return iterationSpeed; }
+    bool isPaused() const { return paused; }
+    void togglePause() { paused = !paused; }
+
+    // Gestion des itérations
+    void setIterationCount(int count) { currentIteration = count; }
+    void setMaxIterations(int max) { maxIterations = max; }
+    int getIterationCount() const { return currentIteration; }
 };
 
 #endif // GRAPHICAL_DISPLAY_H

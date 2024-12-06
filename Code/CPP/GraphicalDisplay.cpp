@@ -2,35 +2,33 @@
 #include <iostream>
 #include <sstream>
 
-// Le constructeur initialise tous les éléments graphiques nécessaires au jeu
+// Constructeur avec initialisation des composants
 GraphicalDisplay::GraphicalDisplay(int windowWidth, int windowHeight)
     : window(sf::VideoMode(windowWidth, windowHeight), "Game of Life"),
       cellSize(10.0f),
       isDrawing(false),
       grid(nullptr),
       lastFPS(0.0f),
-      iterationSpeed(100.0f) {
+      iterationSpeed(100.0f),
+      paused(false),
+      currentIteration(0),
+      maxIterations(0) {
 
-    // Active la synchronisation verticale pour un affichage plus fluide
     window.setVerticalSyncEnabled(true);
-    window.setFramerateLimit(60);  // Limite les FPS pour économiser les ressources
+    window.setFramerateLimit(60);
 
-    // Prépare le buffer pour le double buffering (évite le scintillement)
     buffer.create(windowWidth, windowHeight);
     cellShape.setSize(sf::Vector2f(cellSize - 1, cellSize - 1));
 
-    // Charge la police pour l'interface utilisateur
     if (!font.loadFromFile("arial.ttf")) {
         std::cout << "Erreur de chargement de la police" << std::endl;
     }
 
-    // Configure le texte d'aide qui affiche les commandes
     helpText.setFont(font);
     helpText.setCharacterSize(14);
     helpText.setFillColor(sf::Color::White);
     helpText.setPosition(10, 10);
 
-    // Configure l'affichage des FPS
     fpsText.setFont(font);
     fpsText.setCharacterSize(14);
     fpsText.setFillColor(sf::Color::Yellow);
@@ -42,12 +40,10 @@ void GraphicalDisplay::initialize() {
     std::cout << "Vitesse initiale : " << iterationSpeed << "ms" << std::endl;
 }
 
-// Détermine si une cellule est dans le champ visible de la fenêtre
 bool GraphicalDisplay::isCellVisible(float x, float y, float windowWidth, float windowHeight) const {
     return x >= -cellSize && x <= windowWidth && y >= -cellSize && y <= windowHeight;
 }
 
-// Dessine une cellule individuelle avec la couleur spécifiée
 void GraphicalDisplay::drawCell(float x, float y, float size, sf::Color color, bool drawOutline) {
     cellShape.setPosition(x, y);
     cellShape.setSize(sf::Vector2f(size - 1, size - 1));
@@ -55,7 +51,6 @@ void GraphicalDisplay::drawCell(float x, float y, float size, sf::Color color, b
     buffer.draw(cellShape);
 }
 
-// Met à jour le compteur de FPS
 void GraphicalDisplay::updateFPS() {
     float currentTime = fpsClock.restart().asSeconds();
     lastFPS = 1.f / currentTime;
@@ -65,47 +60,43 @@ void GraphicalDisplay::updateFPS() {
     fpsText.setString(fpsStr.str());
 }
 
-// Affiche l'interface utilisateur avec toutes les informations et commandes
 void GraphicalDisplay::drawInterface(const Grid& grid) {
     std::stringstream controls;
     controls << "Controles:\n"
              << "T: Mode torique " << (grid.getToroidal() ? "(ON)" : "(OFF)") << "\n"
              << "G: Placer un Glider\n"
              << "O: Placer un obstacle\n"
+             << "Espace: " << (paused ? "PAUSE" : "EN COURS") << "\n"
              << "Clic gauche: Activer/Desactiver une cellule\n"
              << "PageUp/PageDown: Vitesse [" << iterationSpeed << "ms]\n"
              << "Echap: Quitter\n"
-             << "Taille: " << grid.getWidth() << "x" << grid.getHeight() << "\n";
+             << "Taille: " << grid.getWidth() << "x" << grid.getHeight() << "\n"
+             << "Itération: " << currentIteration << "/"
+             << (maxIterations > 0 ? std::to_string(maxIterations) : "∞") << "\n";
     helpText.setString(controls.str());
     buffer.draw(helpText);
     buffer.draw(fpsText);
 }
 
-// Mise à jour principale de l'affichage
 void GraphicalDisplay::update(const Grid& grid) {
     handleEvents();
     updateFPS();
 
     if (window.isOpen()) {
-        // Efface le buffer avec la couleur de fond
         buffer.clear(DEAD_COLOR);
 
-        // Calcule les dimensions pour centrer la grille
         float gridWidth = static_cast<float>(window.getSize().x);
         float gridHeight = static_cast<float>(window.getSize().y);
         cellSize = std::min(gridWidth / grid.getWidth(), gridHeight / grid.getHeight());
 
-        // Calcule les offsets pour centrer la grille dans la fenêtre
         float offsetX = (gridWidth - (cellSize * grid.getWidth())) / 2;
         float offsetY = (gridHeight - (cellSize * grid.getHeight())) / 2;
 
-        // Optimisation : ne dessine que les cellules visibles
         int startX = std::max(0, static_cast<int>(-offsetX / cellSize));
         int startY = std::max(0, static_cast<int>(-offsetY / cellSize));
         int endX = std::min(grid.getWidth(), static_cast<int>((gridWidth - offsetX) / cellSize) + 1);
         int endY = std::min(grid.getHeight(), static_cast<int>((gridHeight - offsetY) / cellSize) + 1);
 
-        // Dessine chaque cellule visible
         for (int y = startY; y < endY; y++) {
             for (int x = startX; x < endX; x++) {
                 float posX = offsetX + x * cellSize;
@@ -126,7 +117,6 @@ void GraphicalDisplay::update(const Grid& grid) {
 
         drawInterface(grid);
 
-        // Affiche le résultat final
         buffer.display();
         sf::Sprite sprite(buffer.getTexture());
         window.clear();
@@ -135,7 +125,6 @@ void GraphicalDisplay::update(const Grid& grid) {
     }
 }
 
-// Gestion des événements utilisateur
 void GraphicalDisplay::handleEvents() {
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -148,6 +137,11 @@ void GraphicalDisplay::handleEvents() {
                 switch (event.key.code) {
                     case sf::Keyboard::Escape:
                         window.close();
+                        break;
+
+                    case sf::Keyboard::Space:
+                        paused = !paused;
+                        std::cout << (paused ? "Jeu en pause" : "Jeu repris") << std::endl;
                         break;
 
                     case sf::Keyboard::T:
