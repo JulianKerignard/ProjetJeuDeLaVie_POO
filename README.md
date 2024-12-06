@@ -7,7 +7,7 @@
 
 ###DOCUMENTATION
 
-Wev Documentation : In Dev.....
+Web Documentation : In Dev.....
 
 Text Documentation : https://github.com/JulianKerignard/ProjetJeuDeLaVie_POO/wiki
 
