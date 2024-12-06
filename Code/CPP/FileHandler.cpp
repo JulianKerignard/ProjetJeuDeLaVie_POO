@@ -71,7 +71,39 @@ Grid FileHandler::loadTxtFile(const std::string& path) {
             }
         }
     }
+
     return grid;
+}
+
+void FileHandler::loadTxtFile(const std::string& path, Grid& grid) {
+    std::ifstream file(path);
+    if (!file.is_open()) {
+        throw std::runtime_error("Impossible d'ouvrir le fichier : " + path);
+    }
+
+    std::string line;
+    std::getline(file, line);
+    auto [width, height] = parseGridDimensions(line);
+
+    if (width != grid.getWidth() || height != grid.getHeight()) {
+        throw std::runtime_error("Les dimensions du fichier ne correspondent pas à la grille");
+    }
+
+    for (int y = 0; y < height; y++) {
+        std::getline(file, line);
+        std::istringstream lineStream(line);
+        for (int x = 0; x < width; x++) {
+            int state;
+            if (!(lineStream >> state)) {
+                throw std::runtime_error("Format de grille invalide à la ligne " + std::to_string(y + 1));
+            }
+            if (state == 2) {
+                grid.addObstacle(x, y);
+            } else {
+                grid.setCellAt(x, y, state ? CellState::ALIVE : CellState::DEAD);
+            }
+        }
+    }
 }
 
 Grid FileHandler::loadCellsFile(const std::string& path) {
@@ -83,7 +115,7 @@ Grid FileHandler::loadCellsFile(const std::string& path) {
     // Créer une grille avec les dimensions par défaut
     Grid grid(DEFAULT_CELLS_WIDTH, DEFAULT_CELLS_HEIGHT);
 
-    // Lire d'abord tout le motif pour obtenir ses dimensions
+    // Première passe : lire le motif pour obtenir ses dimensions
     std::vector<std::string> pattern;
     std::string line;
     int patternWidth = 0;
@@ -96,7 +128,7 @@ Grid FileHandler::loadCellsFile(const std::string& path) {
 
     int patternHeight = pattern.size();
 
-    // Calculer les coordonnées du coin supérieur gauche pour centrer le motif
+    // Calculer les coordonnées pour centrer le motif
     int startX = (DEFAULT_CELLS_WIDTH - patternWidth) / 2;
     int startY = (DEFAULT_CELLS_HEIGHT - patternHeight) / 2;
 
@@ -127,14 +159,14 @@ void FileHandler::loadCellsFile(const std::string& path, Grid& grid) {
         throw std::runtime_error("Impossible d'ouvrir le fichier : " + path);
     }
 
-    // Réinitialisation de la grille existante
+    // Réinitialiser la grille
     for (int y = 0; y < grid.getHeight(); y++) {
         for (int x = 0; x < grid.getWidth(); x++) {
             grid.setCellAt(x, y, CellState::DEAD);
         }
     }
 
-    // Lire et analyser le motif
+    // Première passe : lire le motif
     std::vector<std::string> pattern;
     std::string line;
     int patternWidth = 0;
@@ -147,11 +179,11 @@ void FileHandler::loadCellsFile(const std::string& path, Grid& grid) {
 
     int patternHeight = pattern.size();
 
-    // Calculer la position centrale
+    // Centrer le motif dans la grille existante
     int startX = (grid.getWidth() - patternWidth) / 2;
     int startY = (grid.getHeight() - patternHeight) / 2;
 
-    // Placer le motif au centre
+    // Placer le motif
     for (size_t y = 0; y < pattern.size(); y++) {
         for (size_t x = 0; x < pattern[y].length(); x++) {
             if (pattern[y][x] == 'O' || pattern[y][x] == '*') {
@@ -264,5 +296,6 @@ bool FileHandler::validateCellsFormat(const std::string& content) {
             }
         }
     }
+
     return true;
 }
