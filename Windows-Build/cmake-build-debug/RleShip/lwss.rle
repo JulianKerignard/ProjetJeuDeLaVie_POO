@@ -1,0 +1,8 @@
+#N Lightweight spaceship
+#O John Conway
+#C A common spaceship that moves orthogonally.
+x = 5, y = 4
+1b3o$
+b4o$
+4bo$
+bo2bo!

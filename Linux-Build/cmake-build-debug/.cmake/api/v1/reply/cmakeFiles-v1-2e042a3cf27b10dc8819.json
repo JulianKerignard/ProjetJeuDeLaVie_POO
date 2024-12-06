@@ -1,0 +1,278 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/CMakeFiles/3.30.5/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-Initialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/CMakeFiles/3.30.5/CMakeCCompiler.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLSharedTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLSharedTargets-none.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLConfigDependencies.cmake"
+		},
+		{
+			"path" : "libs/googletest/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeDependentOption.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/GNUInstallDirs.cmake"
+		},
+		{
+			"path" : "libs/googletest/googlemock/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindThreads.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"path" : "libs/googletest/googlemock/cmake/gmock.pc.in"
+		},
+		{
+			"path" : "libs/googletest/googlemock/cmake/gmock_main.pc.in"
+		},
+		{
+			"path" : "libs/googletest/googletest/CMakeLists.txt"
+		},
+		{
+			"path" : "libs/googletest/googletest/cmake/internal_utils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindThreads.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CheckLibraryExists.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/root/.cache/JetBrains/RemoteDev/dist/5dc3f598cfaa5_CLion-243.21565.198/bin/cmake/linux/x64/share/cmake-3.30/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in"
+		},
+		{
+			"path" : "libs/googletest/googletest/cmake/Config.cmake.in"
+		},
+		{
+			"path" : "libs/googletest/googletest/cmake/gtest.pc.in"
+		},
+		{
+			"path" : "libs/googletest/googletest/cmake/gtest_main.pc.in"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "/root/CLionProjects/untitled/cmake-build-debug",
+		"source" : "/root/CLionProjects/untitled"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 1
+	}
+}
