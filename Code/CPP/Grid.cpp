@@ -4,6 +4,7 @@
 #include <chrono>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 Grid::Grid(int width, int height)
     : width(width), height(height), isToroidal(false) {
@@ -14,16 +15,22 @@ Grid::Grid(int width, int height)
 }
 
 void Grid::setCellAt(int x, int y, CellState state) {
-    if (x < 0 || x >= width || y < 0 || y >= height) {
+    int validX = x;
+    int validY = y;
+
+    if (isToroidal) {
+        validX = ((x % width) + width) % width;
+        validY = ((y % height) + height) % height;
+    } else if (x < 0 || x >= width || y < 0 || y >= height) {
         throw std::out_of_range("Cell coordinates out of range");
     }
-    cells[y][x] = Cell(state);
+
+    cells[validY][validX] = Cell(state);
 }
 
 int Grid::getValidIndex(int index, int max) const {
     if (isToroidal) {
-        if (index < 0) return max - 1;
-        if (index >= max) return 0;
+        return ((index % max) + max) % max;
     }
     return index;
 }
@@ -32,7 +39,6 @@ int Grid::countLiveNeighbors(int x, int y) const {
     int count = 0;
     for (const auto& neighbor : getNeighbors(x, y)) {
         const Cell& neighborCell = getCellAt(neighbor.first, neighbor.second);
-        // Ne pas compter les obstacles comme voisins vivants
         if (!neighborCell.isObstacleCell() && neighborCell.getCurrentState() == CellState::ALIVE) {
             count++;
         }
@@ -43,24 +49,29 @@ int Grid::countLiveNeighbors(int x, int y) const {
 void Grid::updateCells() {
     auto start = std::chrono::high_resolution_clock::now();
 
-    // Configuration du multithreading
-    const int threadCount = std::thread::hardware_concurrency();
-    std::vector<std::thread> threads;
-    const int rowsPerThread = height / threadCount;
+    // Créer une copie de la grille pour les calculs
+    auto newCells = cells;
 
-    // Première phase : calculer les états suivants
+    // Calculer le nombre optimal de threads
+    int threadCount = std::min(static_cast<int>(std::thread::hardware_concurrency()), height);
+    std::vector<std::thread> threads;
+    threads.reserve(threadCount);
+
+    // S'assurer qu'il y a au moins une ligne par thread
+    const int rowsPerThread = std::max(1, height / threadCount);
+    threadCount = (height + rowsPerThread - 1) / rowsPerThread;
+
+    // Mise à jour des états
     for (int i = 0; i < threadCount; ++i) {
         int startRow = i * rowsPerThread;
-        int endRow = (i == threadCount - 1) ? height : (i + 1) * rowsPerThread;
+        int endRow = std::min(startRow + rowsPerThread, height);
 
-        threads.emplace_back([this, startRow, endRow, i]() {
+        threads.emplace_back([this, &newCells, startRow, endRow, i]() {
             std::cout << "Thread " << i << " traite les lignes " << startRow << " à " << endRow - 1 << std::endl;
 
             for (int y = startRow; y < endRow; y++) {
                 for (int x = 0; x < width; x++) {
-                    // Skip les obstacles
                     if (cells[y][x].isObstacleCell()) {
-                        cells[y][x].setNextState(cells[y][x].getCurrentState());
                         continue;
                     }
 
@@ -69,15 +80,11 @@ void Grid::updateCells() {
 
                     if (currentState == CellState::DEAD) {
                         if (liveNeighbors == 3) {
-                            cells[y][x].setNextState(CellState::ALIVE);
-                        } else {
-                            cells[y][x].setNextState(CellState::DEAD);
+                            newCells[y][x] = Cell(CellState::ALIVE);
                         }
-                    } else if (currentState == CellState::ALIVE) {
+                    } else { // ALIVE
                         if (liveNeighbors < 2 || liveNeighbors > 3) {
-                            cells[y][x].setNextState(CellState::DEAD);
-                        } else {
-                            cells[y][x].setNextState(CellState::ALIVE);
+                            newCells[y][x] = Cell(CellState::DEAD);
                         }
                     }
                 }
@@ -89,29 +96,9 @@ void Grid::updateCells() {
     for (auto& thread : threads) {
         thread.join();
     }
-    threads.clear();
 
-    // Deuxième phase : mettre à jour les états (aussi en parallèle)
-    for (int i = 0; i < threadCount; ++i) {
-        int startRow = i * rowsPerThread;
-        int endRow = (i == threadCount - 1) ? height : (i + 1) * rowsPerThread;
-
-        threads.emplace_back([this, startRow, endRow]() {
-            for (int y = startRow; y < endRow; y++) {
-                for (int x = 0; x < width; x++) {
-                    // Ne mettre à jour que les cellules non-obstacles
-                    if (!cells[y][x].isObstacleCell()) {
-                        cells[y][x].updateState();
-                    }
-                }
-            }
-        });
-    }
-
-    // Attendre que tous les threads terminent
-    for (auto& thread : threads) {
-        thread.join();
-    }
+    // Mettre à jour la grille avec les nouveaux états
+    cells = std::move(newCells);
 
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
@@ -121,10 +108,9 @@ void Grid::updateCells() {
 
 Cell& Grid::getCellAt(int x, int y) {
     if (isToroidal) {
-        x = getValidIndex(x, width);
-        y = getValidIndex(y, height);
-    }
-    if (x < 0 || x >= width || y < 0 || y >= height) {
+        x = ((x % width) + width) % width;
+        y = ((y % height) + height) % height;
+    } else if (x < 0 || x >= width || y < 0 || y >= height) {
         throw std::out_of_range("Cell coordinates out of range");
     }
     return cells[y][x];
@@ -135,7 +121,10 @@ const Cell& Grid::getCellAt(int x, int y) const {
 }
 
 void Grid::addObstacle(int x, int y) {
-    if (x < 0 || x >= width || y < 0 || y >= height) {
+    if (isToroidal) {
+        x = ((x % width) + width) % width;
+        y = ((y % height) + height) % height;
+    } else if (x < 0 || x >= width || y < 0 || y >= height) {
         throw std::out_of_range("Obstacle coordinates out of range");
     }
     cells[y][x].setObstacle(true);
@@ -143,6 +132,8 @@ void Grid::addObstacle(int x, int y) {
 
 std::vector<std::pair<int, int>> Grid::getNeighbors(int x, int y) const {
     std::vector<std::pair<int, int>> neighbors;
+    neighbors.reserve(8);
+
     for (int dy = -1; dy <= 1; dy++) {
         for (int dx = -1; dx <= 1; dx++) {
             if (dx == 0 && dy == 0) continue;
@@ -151,8 +142,8 @@ std::vector<std::pair<int, int>> Grid::getNeighbors(int x, int y) const {
             int newY = y + dy;
 
             if (isToroidal) {
-                newX = getValidIndex(newX, width);
-                newY = getValidIndex(newY, height);
+                newX = ((newX % width) + width) % width;
+                newY = ((newY % height) + height) % height;
                 neighbors.emplace_back(newX, newY);
             } else if (newX >= 0 && newX < width && newY >= 0 && newY < height) {
                 neighbors.emplace_back(newX, newY);

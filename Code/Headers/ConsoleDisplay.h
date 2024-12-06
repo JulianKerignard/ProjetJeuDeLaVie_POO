@@ -7,7 +7,7 @@
 class ConsoleDisplay : public DisplayManager {
 private:
     int iterationCounter;
-    std::ofstream outputFile;  // Ajout du membre outputFile
+    std::ofstream outputFile;
 
 public:
     ConsoleDisplay();

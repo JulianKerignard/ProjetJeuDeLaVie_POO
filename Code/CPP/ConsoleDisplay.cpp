@@ -22,7 +22,7 @@ void ConsoleDisplay::update(const Grid& grid) {
             const Cell& cell = grid.getCellAt(x, y);
             if (cell.isObstacleCell()) {
                 std::cout << "2 ";
-            } else if (cell.getCurrentState() == CellState::ALIVE) {
+            } else if ( cell.getCurrentState() == CellState::ALIVE) {
                 std::cout << "1 ";
             } else {
                 std::cout << "0 ";

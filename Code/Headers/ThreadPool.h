@@ -21,12 +21,12 @@ public:
     explicit ThreadPool(size_t threads);
     ~ThreadPool();
 
-    // Ajouter une nouvelle tâche au pool
+    // Add a new task to the pool
     template<class F, class... Args>
-    auto enqueue(F&& f, Args&&... args) 
+    auto enqueue(F&& f, Args&&... args)
         -> std::future<typename std::invoke_result<F, Args...>::type>;
 
-    // Arrêter tous les threads
+    // Stop all threads
     void shutdown();
 };
 

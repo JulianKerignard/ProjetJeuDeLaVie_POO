@@ -299,3 +299,7 @@ bool FileHandler::validateCellsFormat(const std::string& content) {
 
     return true;
 }
+
+bool FileHandler::validateFileFormat(const std::string& content) {
+    return validateTxtFormat(content);
+}

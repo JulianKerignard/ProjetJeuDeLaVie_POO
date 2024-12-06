@@ -3,7 +3,7 @@
 #include <thread>
 #include <chrono>
 
-class ConsoleDisplay : public DisplayManager {
+class test_ConsoleDisplay : public DisplayManager {
 public:
     void initialize() override {
         std::cout << "Initialisation de l'affichage console" << std::endl;

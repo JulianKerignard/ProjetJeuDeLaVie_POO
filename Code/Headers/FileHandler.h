@@ -34,6 +34,9 @@ public:
     // Méthodes de chargement spécifiques publiques
     static void loadTxtFile(const std::string& path, Grid& grid);
     static void loadCellsFile(const std::string& path, Grid& grid);
+
+    // New public method
+    bool validateFileFormat(const std::string& content);
 };
 
 #endif // FILE_HANDLER_H

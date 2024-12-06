@@ -79,6 +79,8 @@ void Game::initializeDisplay(DisplayMode mode) {
             displayManager = std::move(graphicalDisplay);
             break;
         }
+        default:
+            throw std::invalid_argument("Mode d'affichage invalide");
     }
 }
 
@@ -241,13 +243,10 @@ void Game::run() {
             if (maxIterations > 0 && iterationCount >= maxIterations) {
                 std::cout << "Nombre maximum d'itérations atteint (" << maxIterations << ")" << std::endl;
                 isRunning = false;
-                break;
             }
-
             std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(iterationDelay)));
         }
     }
-
     displayManager->close();
 }
 
